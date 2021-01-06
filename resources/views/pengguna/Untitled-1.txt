@@ -1,0 +1,48 @@
+@extends('layouts2.master')
+
+@section('content2')
+
+<h2 class="text-center font-weight-bold"> Dokter Spesialis Paru </h2>
+<hr style="width: 20%;">
+<br>
+<div class="row">
+    <div class="col-sm-6 text-center mb-3">
+        <img src="/assets/img/dokter6.png" width="200px" height="200px" alt="">
+    </div>
+    <div class="col-sm-4 text-center mb-2">
+        <img src="/assets/img/dokter4.png" width="200px" height="200px" alt="">
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+            {{-- <h5 class=" font-weight-bold">dr. Putu Dyah Widyaningsih, Sp.P</h5>
+            <p class="">081234666878</p>
+            <p class="">RSUD Sanjiwani Gianyar</p>
+            <p class="">Jam 09.00-13.00</p> --}}
+            <h5 class=" font-weight-bold">{{$dokter[0]->nama}}</h5>
+            <p class="">{{$dokter[0]->no_telepon}}</p>
+            <p class="">{{$dokter[0]->alamat}}</p>
+            <p class="">{{$dokter[0]->keterangan}}</p>
+    </div>
+    {{-- <div class="col-sm-1"></div> --}}
+    <div class="col-sm-5">
+        {{-- <div class="card-body"> --}}
+            <h5 class=" font-weight-bold">{{$dokter[1]->nama}}</h5>
+            <p class="">{{$dokter[1]->no_telepon}}</p>
+            <p class="">{{$dokter[1]->alamat}}</p>
+            <p class="">{{$dokter[1]->keterangan}}</p>
+        {{-- </div> --}}
+    </div>
+    
+</div>
+<br><br>
+
+
+
+<script>
+    $("#dokter").addClass("active");
+
+</script>
+@endsection
