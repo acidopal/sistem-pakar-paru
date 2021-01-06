@@ -65,7 +65,7 @@ class DiagnosaController extends Controller
         }
         // dd($penyakit);
         // var_dump($penyakit);
-        foreach ($penyakit as $key => $value){
+         foreach ($penyakit as $key => $value){
             // dd($value);
             $count = 0;
             foreach ($gejala as $k => $v) {
@@ -73,42 +73,17 @@ class DiagnosaController extends Controller
                     ->where([
                         ['id_penyakit', '=', $value],
                         ['id_gejala', '=', $v],
-                    ])->get();
+                    ])->first();
                 // dd($value);
                 // dd($gejala);
 
-                if(!$cek->isEmpty()){
-                    $nilai_cf[$value][] = $cek;
+                if(!is_null($cek)){
+                    $nilai_akhir_cf[$value][] = $cek->nilai_cf * $data['gejala-user-'.$v];
                     // dd($nilai_cf);
                 }
                
             }
         }
-
-        // dd($nilai_cf);
-        // dd($nilai_cf[5][1][0]['nilai_cf']);
-        // dd($nilai_cf[1][2]);
-        // dd($nilai_cf[1][0][0]['nilai_cf']);
-        // var_dump($nilai_cf);
-        foreach ($nilai_cf as $key => $value) {
-            // dd($value);
-            // var_dump(count($value));
-            foreach ($value as $k => $v) {
-                // var_dump(count($v));
-                // dd($v);
-                if(count($v) < 1){
-                    $nilai_akhir_cf[$key] = $v1['nilai_cf'];
-                } else {
-                    foreach ($v as $k1 => $v1) {
-                        // dd($v1['nilai_cf']);
-                        $nilai_akhir_cf[$key][$k] = $v1['nilai_cf'];
-                        // dd($nilai_akhir_cf);
-                    }
-                }
-            } //untuk melakuakn perulangan dari nilai cf pada penyakit
-        }
-
-    //    dd($nilai_akhir_cf); 
 
         foreach ($nilai_akhir_cf as $key => $value) {
             if(count($nilai_akhir_cf[$key]) > 1){
@@ -125,7 +100,7 @@ class DiagnosaController extends Controller
             }
         }
 
-        //  dd($cf);
+         // dd($cf);
         // dd($nilai_akhir_cf);
 
          foreach($cf as $key => $value) {

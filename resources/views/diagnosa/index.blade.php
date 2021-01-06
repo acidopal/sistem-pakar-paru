@@ -41,7 +41,6 @@
                     <table class="table">
                         <thead class="">
                             <tr>
-                                <th width="30"></th>
                                 <th>
                                     <h5 class="mt-3">Silahkan Pilih Gejala yang Dirasakan :</h5>
                                     <p>Tips Memilih Gejala:<br>
@@ -55,8 +54,23 @@
                         <tbody align="left">
                             @foreach($data as $row)
                             <tr>
-                                <td><input type="checkbox" name="gejala[]" class="flat"  value="{{$row->id}}"></td>
-                                <td>{{$row->nama}}</td>
+                                <td width="50%">{{$row->nama}}</td>
+                                <td>
+                                    <input type="radio" id="sangat-yakin-{{ $row->id }}" name="gejala-user-{{ $row->id }}" value="1">
+                                    <label for="sangat-yakin-{{ $row->id }}">Sangat Yakin</label><br>
+                                    <input type="radio" id="yakin-{{ $row->id }}" name="gejala-user-{{ $row->id }}" value="0.8">
+                                    <label for="yakin-{{ $row->id }}">Yakin</label><br>
+                                    <input type="radio" id="cukup-yakin-{{ $row->id }}" name="gejala-user-{{ $row->id }}" value="0.6">
+                                    <label for="cukup-yakin-{{ $row->id }}">Cukup Yakin</label><br>
+                                    <input type="radio" id="sedikit-yakin-{{ $row->id }}" name="gejala-user-{{ $row->id }}" value="0.4">
+                                    <label for="sedikit-yakin-{{ $row->id }}">Sedikit Yakin</label><br>
+                                     <input type="radio" id="tidak-tahu-{{ $row->id }}" name="gejala-user-{{ $row->id }}" value="0.2">
+                                    <label for="tidak-tahu-{{ $row->id }}">Tidak Tahu</label><br>
+                                    <input type="radio" id="tidak-{{ $row->id }}" name="gejala-user-{{ $row->id }}" value="0">
+                                    <label for="tidak-{{ $row->id }}">Tidak</label><br>
+
+                                    <input type="hidden" name="gejala[]" value="{{$row->id}}">
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
